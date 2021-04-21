@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const PieChart1 = () => {
+const PieChartSingle = () => {
   const radius = 90;
   const [deg, setDeg] = useState(0);
   const [strokeDashoffset, setStrokeDashoffset] = useState(
@@ -60,4 +60,4 @@ const PieChart1 = () => {
     </div>
   );
 };
-export default PieChart1;
+export default PieChartSingle;

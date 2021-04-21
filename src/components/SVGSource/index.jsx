@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col } from "antd";
-import PieChart1 from "./PieChart1";
+import PieChartSingle from "./PieChartSingle";
 
 const SVGSource = () => {
   return (
@@ -8,7 +8,7 @@ const SVGSource = () => {
       <div className="svgSource__wrapper">
         <Row>
           <Col span={24}>
-            <PieChart1 />
+            <PieChartSingle />
           </Col>
         </Row>
       </div>
