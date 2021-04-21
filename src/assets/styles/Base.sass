@@ -43,13 +43,52 @@ body
 
 .circleBox
   text-align: center
-  
-#svg #circle 
+
+#svg #circle
   stroke-dashoffset: 0
   transition: stroke-dashoffset 1s linear
   stroke: #666
   stroke-width: 2em
 
-#svg #bar 
+#svg #bar
   stroke: #FF9F1E
   stroke-width: 2em
+
+.svgCircle
+  width: 100px
+  height: 100px
+  transform: rotate(-90deg)
+  background: yellowgreen
+  border-radius: 50%
+
+circle.circle1
+  fill: transparent
+  stroke: red
+  stroke-width: 32
+  /*
+   * 第一個數字：虛線長度；
+   * 第二個數字：虛線彼此間的間距
+   */
+  stroke-dasharray: 55 100
+
+circle.circle2
+  fill: transparent
+  stroke: lightblue
+  stroke-width: 32
+  stroke-dasharray: 15 100
+  stroke-dashoffset: -55
+  // 0 - 50(已佔)
+circle.circle3
+  fill: transparent
+  stroke: yellow
+  stroke-width: 32
+  stroke-dasharray: 15 100
+  stroke-dashoffset: -70
+  // 0 - 90(已佔)
+circle.circle4
+  fill: transparent
+  stroke: pink
+  stroke-width: 32
+  stroke-dasharray: 15 100
+  stroke-dashoffset: -85
+  
