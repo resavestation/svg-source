@@ -8,13 +8,15 @@ const SVGSource = () => {
     <div className="source">
       <div className="source__wrapper">
         <Row>
+          {/* SVG */}
           <Col span={24}>
-            {/* SVG */}
             <PieChartSingle />
           </Col>
           <Col span={24}>
-            {/* SVG */}
-            <PieChartPercent />
+            {/* 修改成會自己長成框框寬度100%，所以測試時寫死一個寬 */}
+            <div style={{ width: "250px", marginTop: "5%" }}>
+              <PieChartPercent />
+            </div>
           </Col>
         </Row>
       </div>

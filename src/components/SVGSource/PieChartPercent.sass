@@ -1,26 +1,27 @@
-.svgCircle
-  width: 100px
-  height: 100px
-  transform: rotate(-90deg)
-  background: yellowgreen
-  border-radius: 50%
-  circle
+.pieChart
+  &__list
+    width: 100%
+    height: auto
+    transform: rotate(-90deg)
+    background: yellowgreen
+    border-radius: 50%
+  &__circle
     fill: transparent
     stroke-width: 32
-    &.circle1
+    &--1
       stroke: red
       stroke-dasharray: 55 100
-    &.circle2
+    &--2
       stroke: lightblue
       stroke-dasharray: 15 100
       stroke-dashoffset: -55
       // 0 - 50(已佔)
-    &.circle3
+    &--3
       stroke: yellow
       stroke-dasharray: 15 100
       stroke-dashoffset: -70
       // 0 - 90(已佔)
-    &.circle4
+    &--4
       stroke: pink
       stroke-dasharray: 15 100
       stroke-dashoffset: -85
