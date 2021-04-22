@@ -3,7 +3,7 @@ import "./PieChartPercent.sass";
 
 const PieChartPercent = (props) => {
   const pieData = props.pieData ? props.pieData : [];
-  const drawPieChart = async () => {
+  const drawPieChart = () => {
     const pieItem = document.getElementsByClassName("pieChart__item");
     if (pieData.length > 0 && pieItem[0]) {
       const sumData = pieData.reduce((accumulator, currentValue) => {
