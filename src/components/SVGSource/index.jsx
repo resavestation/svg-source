@@ -26,12 +26,6 @@ const SVGSource = () => {
       number: 1,
     },
   ];
-  /**
-   * var reducePlus = pieData.reduce((accumulator, currentValue) => {
-  // 分別為前一個回傳值, 目前值, 當前索引值
-  return accumulator + currentValue.nubmer;  // 與前一個值相加
-}, 0);              
-   */
   return (
     <div className="source">
       <div className="source__wrapper">
