@@ -1,68 +1,71 @@
 import React, { useEffect } from "react";
 
-const PieChartPercentCanvas = () => {
-  var infoData = [
-    { name: "漢堡", value: 245 },
-    { name: "薯條", value: 512 },
-    { name: "雞塊", value: 215 },
-    { name: "炸雞", value: 185 },
-    { name: "可樂", value: 158 },
-  ];
-  var x = 200,
-    y = 150,
-    r = 100,
-    begin_deg = (-90 * Math.PI) / 180,
-    color = ["green", "yellow", "brown", "tan", "red", "green", "blue", "pink"],
-    total = 0;
-  for (var i = 0; i < infoData.length; i++) {
-    total += parseInt(infoData[i].value);
-  }
-  const tt = () => {
-    var cvs = document.getElementById("cvs");
-    var ctx = cvs.getContext("2d");
-    for (var i = 0; i < infoData.length; i++) {
-      var value_deg = ((infoData[i].value / total) * 360 * Math.PI) / 180;
-      // 取得 value 的角度
-      var end_deg = begin_deg + value_deg;
-      // value結束角度 = value起始角度 + value角度
-
-      // 畫出每個物件的範圍、填色
+const PieChartPercentCanvas = (props) => {
+  const pieData = props.pieData ? props.pieData : [];
+  const pieChartInit = () => {
+    const canvasWrapper = document.getElementsByClassName(
+      "canvasPieChart__wrapper"
+    );
+    if (canvasWrapper[0]) {
+      const canvasElem = document.createElement("canvas");
+      const wrapperWidth = canvasWrapper[0].offsetWidth;
+      const wrapperHeight = 0.75 * wrapperWidth;
+      const radius = 0.25 * wrapperWidth;
+      canvasElem.setAttribute("width", wrapperWidth);
+      canvasElem.setAttribute("height", wrapperHeight);
+      drawPieChart(canvasElem, wrapperWidth, wrapperHeight, radius);
+      drawPieChartText(canvasElem);
+      canvasWrapper[0].appendChild(canvasElem);
+    }
+  };
+  const drawPieChart = (item, wrapperWidth, wrapperHeight, radius) => {
+    let begin_deg = (-90 * Math.PI) / 180;
+    const sumData = pieData.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue.value;
+    }, 0);
+    const cvs = item;
+    const ctx = cvs.getContext("2d");
+    const x = wrapperWidth / 2;
+    const y = wrapperHeight / 2;
+    for (let i in pieData) {
+      const value_deg = ((pieData[i].value / sumData) * 360 * Math.PI) / 180;
+      const end_deg = begin_deg + value_deg;
       ctx.beginPath();
       ctx.moveTo(x, y);
-      ctx.arc(x, y, r, begin_deg, end_deg);
-      ctx.fillStyle = color[i];
+      ctx.arc(x, y, radius, begin_deg, end_deg);
+      ctx.fillStyle = pieData[i].color;
       ctx.fill();
-
-      // 取得物件角度中間值並列出每個物件的名字、數量
-      var text_deg = begin_deg + value_deg * 0.5;
-      var text_X = x + (r + 10) * Math.cos(text_deg);
-      var text_Y = y + (r + 10) * Math.sin(text_deg);
-
-      // 為了讓文字在圓外就必需設定在圖 左(右) 邊時文字要靠 右(左)
+      const text_deg = begin_deg + value_deg * 0.5;
+      const text_X = x + (radius + 10) * Math.cos(text_deg);
+      const text_Y = y + (radius + 10) * Math.sin(text_deg);
       if (text_deg > (90 * Math.PI) / 180 && text_deg < (270 * Math.PI) / 180) {
         ctx.textAlign = "end";
       }
-
-      // 填入文字
       ctx.font = "14px Arial";
       ctx.fillStyle = "#333";
-      var text = infoData[i].name + infoData[i].value + "份";
-
+      const text = pieData[i].name + pieData[i].value;
       ctx.fillText(text, text_X, text_Y);
       begin_deg = end_deg;
     }
-    for (var i = 0; i < infoData.length; i++) {
+  };
+  const drawPieChartText = (item) => {
+    const cvs = item;
+    const ctx = cvs.getContext("2d");
+    for (let i in pieData) {
       ctx.beginPath();
-      ctx.fillStyle = color[i];
+      ctx.fillStyle = pieData[i].color;
       ctx.fillRect(12, 12 + 14 * i, 10, 10);
-
-      ctx.font = "12px Arial";
+      ctx.font = "14px Arial";
       ctx.fillStyle = "#333";
       ctx.textAlign = "start";
-      ctx.fillText(infoData[i].name + " " + infoData[i].value, 25, 20 + 14 * i);
+      ctx.fillText(pieData[i].name + " " + pieData[i].value, 25, 20 + 14 * i);
     }
   };
-  useEffect(tt, []);
-  return <canvas id="cvs" width="400" height="300"></canvas>;
+  useEffect(pieChartInit, []);
+  return (
+    <div className="canvasPieChart">
+      <div className="canvasPieChart__wrapper"></div>
+    </div>
+  );
 };
 export default PieChartPercentCanvas;
