@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col } from "antd";
 import PieChartSingle from "./PieChartSingle";
 import PieChartPercent from "./PieChartPercent";
+import PieChartPercentCanvas from "./PieChartPercentCanvas";
 
 const SVGSource = () => {
   const pieData = [
@@ -36,8 +37,17 @@ const SVGSource = () => {
           </Col>
           <Col span={24}>
             {/* 修改成會自己長成框框寬度100%，所以測試時寫死一個寬 */}
+            {/*
             <div style={{ width: "250px", marginTop: "5%" }}>
               <PieChartPercent pieData={pieData} />
+            </div>
+            */}
+          </Col>
+          {/* Canvas */}
+          <Col span={24}>
+            {/* 修改成會自己長成框框寬度100%，所以測試時寫死一個寬 */}
+            <div style={{ width: "250px", marginTop: "5%" }}>
+              <PieChartPercentCanvas pieData={pieData} />
             </div>
           </Col>
         </Row>
