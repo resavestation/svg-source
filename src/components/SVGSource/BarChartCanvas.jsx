@@ -36,7 +36,7 @@ const BarChartCanvas = (props) => {
       ctx.font = "14px Arial";
       ctx.fillStyle = "#333";
       const text = barData[i].name + barData[i].value;
-      ctx.fillText(text, offsetX + unitWidth / 4, wrapperHeight);
+      ctx.fillText(text, offsetX + unitWidth / 4, wrapperHeight - 14);
       offsetX = offsetX + unitWidth;
     }
   };
