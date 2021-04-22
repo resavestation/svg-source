@@ -13,8 +13,10 @@ Canvas：
 - PieChartPercentCanvas
   -- 可輸入多個百分比組成圓餅圖，並加上文字資訊
 
--- 小筆記
-(以下 table 取自https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/384410/)
+- BarChartCanvas
+  -- 簡單趨勢直條圖，比較各個項目的增長
+  -- 小筆記
+  (以下 table 取自https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/384410/)
 
 <table>
   <tr>

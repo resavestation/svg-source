@@ -82,7 +82,7 @@ const SVGSource = () => {
           </Col>
           <Col span={24}>
             <div style={{ marginTop: "5%" }}>
-              <BarChartCanvas />
+              <BarChartCanvas barData={pieData2} />
             </div>
           </Col>
         </Row>
