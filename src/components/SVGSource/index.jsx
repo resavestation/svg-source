@@ -7,23 +7,23 @@ const SVGSource = () => {
   const pieData = [
     {
       color: "#8bfdfc",
-      number: 1,
+      value: 1,
     },
     {
       color: "#46a2f7",
-      number: 1,
+      value: 1,
     },
     {
       color: "#3f74f7",
-      number: 1,
+      value: 1,
     },
     {
       color: "#3e44ff",
-      number: 1,
+      value: 1,
     },
     {
       color: "#127e41",
-      number: 1,
+      value: 1,
     },
   ];
   return (
