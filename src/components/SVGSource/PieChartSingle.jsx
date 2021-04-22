@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./PieChartSingle.sass";
 
 const PieChartSingle = () => {
   const radius = 90;

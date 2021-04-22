@@ -5,13 +5,15 @@ import PieChartPercent from "./PieChartPercent";
 
 const SVGSource = () => {
   return (
-    <div className="svgSource">
-      <div className="svgSource__wrapper">
+    <div className="source">
+      <div className="source__wrapper">
         <Row>
           <Col span={24}>
+            {/* SVG */}
             <PieChartSingle />
           </Col>
           <Col span={24}>
+            {/* SVG */}
             <PieChartPercent />
           </Col>
         </Row>

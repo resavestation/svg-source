@@ -33,50 +33,10 @@ body
   &-error
     color: $colorError
 
-.svgSource
+.source
   &__wrapper
     width: 700px
     margin: 5% auto
     padding: 2em 2rem
     box-shadow: 1px 4px 12px 4px rgba(51,51,102,.1)
     background: #fff
-
-.circleBox
-  text-align: center
-
-#svg #circle
-  stroke-dashoffset: 0
-  transition: stroke-dashoffset 1s linear
-  stroke: #666
-  stroke-width: 2em
-
-#svg #bar
-  stroke: #FF9F1E
-  stroke-width: 2em
-
-.svgCircle
-  width: 100px
-  height: 100px
-  transform: rotate(-90deg)
-  background: yellowgreen
-  border-radius: 50%
-  circle
-    fill: transparent
-    stroke-width: 32
-    &.circle1
-      stroke: red
-      stroke-dasharray: 55 100
-    &.circle2
-      stroke: lightblue
-      stroke-dasharray: 15 100
-      stroke-dashoffset: -55
-      // 0 - 50(已佔)
-    &.circle3
-      stroke: yellow
-      stroke-dasharray: 15 100
-      stroke-dashoffset: -70
-      // 0 - 90(已佔)
-    &.circle4
-      stroke: pink
-      stroke-dasharray: 15 100
-      stroke-dashoffset: -85
