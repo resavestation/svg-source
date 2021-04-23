@@ -2,6 +2,12 @@ import React, { useEffect } from "react";
 
 const BarChartCanvas = (props) => {
   const barData = props.barData ? props.barData : [];
+  const fontData = props.fontData
+    ? props.fontData
+    : {
+        fontSize: 14,
+        fontFamily: "Arial",
+      };
   const barChartInit = () => {
     const canvasWrapper = document.getElementsByClassName(
       "canvasBarChart__wrapper"
@@ -22,6 +28,7 @@ const BarChartCanvas = (props) => {
       canvasElem.setAttribute("width", wrapperWidth);
       canvasElem.setAttribute("height", wrapperHeight);
       drawBarChart(canvasElem, unitWidth, unitHeight, wrapperHeight);
+      drawBarChartText(canvasElem);
       canvasWrapper[0].appendChild(canvasElem);
     }
   };
@@ -32,12 +39,34 @@ const BarChartCanvas = (props) => {
     for (let i = 0; i < barData.length; i++) {
       const barHeight = barData[i].value * unitHeight;
       ctx.fillStyle = barData[i].color;
-      ctx.fillRect(offsetX, wrapperHeight - barHeight, unitWidth, barHeight);
-      ctx.font = "14px Arial";
+      ctx.fillRect(
+        offsetX,
+        wrapperHeight - barHeight - fontData.fontSize,
+        unitWidth,
+        barHeight - fontData.fontSize
+      );
+      ctx.font = `${fontData.fontSize}px ${fontData.fontFamily}`;
       ctx.fillStyle = "#333";
       const text = barData[i].name + barData[i].value;
-      ctx.fillText(text, offsetX + unitWidth / 4, wrapperHeight - 14);
+      ctx.fillText(
+        text,
+        offsetX + unitWidth / 4,
+        wrapperHeight - fontData.fontSize
+      );
       offsetX = offsetX + unitWidth;
+    }
+  };
+  const drawBarChartText = (item) => {
+    const cvs = item;
+    const ctx = cvs.getContext("2d");
+    for (let i in barData) {
+      ctx.beginPath();
+      ctx.fillStyle = barData[i].color;
+      ctx.fillRect(12, 12 + 14 * i, 10, 10);
+      ctx.font = "14px Arial";
+      ctx.fillStyle = "#333";
+      ctx.textAlign = "start";
+      ctx.fillText(barData[i].name + " " + barData[i].value, 25, 20 + 14 * i);
     }
   };
   useEffect(barChartInit, []);
