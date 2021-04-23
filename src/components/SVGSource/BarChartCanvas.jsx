@@ -7,6 +7,7 @@ const BarChartCanvas = (props) => {
     : {
         fontSize: 14,
         fontFamily: "Arial",
+        fontColor: "#333",
       };
   const barChartInit = () => {
     const canvasWrapper = document.getElementsByClassName(
@@ -46,7 +47,7 @@ const BarChartCanvas = (props) => {
         barHeight - fontData.fontSize
       );
       ctx.font = `${fontData.fontSize}px ${fontData.fontFamily}`;
-      ctx.fillStyle = "#333";
+      ctx.fillStyle = fontData.fontColor;
       const text = barData[i].name + barData[i].value;
       ctx.fillText(
         text,
@@ -63,8 +64,8 @@ const BarChartCanvas = (props) => {
       ctx.beginPath();
       ctx.fillStyle = barData[i].color;
       ctx.fillRect(12, 12 + 14 * i, 10, 10);
-      ctx.font = "14px Arial";
-      ctx.fillStyle = "#333";
+      ctx.font = `${fontData.fontSize}px ${fontData.fontFamily}`;
+      ctx.fillStyle = fontData.fontColor;
       ctx.textAlign = "start";
       ctx.fillText(barData[i].name + " " + barData[i].value, 25, 20 + 14 * i);
     }
